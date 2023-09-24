@@ -1,0 +1,251 @@
+:root {
+    --main-white: #F7FFF7;
+    --main-accent: #FADF63;
+    --main-dark-blue: #292F36;
+}
+
+.hidden {
+    display: none;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    margin: 20px;
+    background-color: var(--main-white);
+    color: var(--main-dark-blue);
+}
+
+a {
+    color: inherit;
+}
+
+img {
+    box-shadow: 7px 9px 27px 7px rgba(0,0,0,0.3);
+}
+
+a:hover {
+    color: rgb(97, 97, 97);
+    text-decoration: none;
+}
+
+header {
+    font-family: 'Arvo', serif;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#logo {
+    color: var(--main-accent);
+    font-size: 60px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    display: flex;
+}
+
+#welcome {
+    display: flex;
+    color: var(--main-dark-blue);
+    flex-direction: column;
+    width: 40vw;
+    padding: 20px;
+    background-color: var(--main-accent);
+    border-radius: 10px;
+    box-shadow: 7px 9px 27px 7px rgba(0,0,0,0.3);
+    align-items: center;
+    margin: 10vh auto;
+}
+
+#welcome > a {
+    text-decoration: underline;
+}
+
+#sign-up {
+    display: flex;
+    flex-direction: column;
+    margin: 10vh auto 5px; 
+    width: 40vw; 
+    padding: 20px;
+    background-color: var(--main-accent);
+    border-radius: 10px;
+    box-shadow: 7px 9px 27px 7px rgba(0,0,0,0.3);
+}
+
+#sign-up > label {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#sign-up > button {
+    margin: 1vw 0 0 0;
+}
+
+#logout {
+    margin-top: 50px;
+}
+
+#login-card {
+    background: rgba(255, 255, 255, 0.555);
+    padding: 20px;
+    color: rgb(0, 0, 0);
+    width: fit-content;
+    display: flex;
+    margin: 10px;
+}
+
+#new {
+    color: var(--main-dark-blue);
+    width: 40vw;
+    height: fit-content;
+    padding: 20px;
+    background-color: var(--main-accent);
+    border-radius: 10px;
+    box-shadow: 7px 9px 27px 7px rgba(0,0,0,0.3);
+}
+
+#add-one {
+    font-size: 5vw;
+}
+
+#dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.list-title{
+    font-size: 20px;
+    margin: 0 0 30px 0;
+}
+
+.todo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 40vw;
+    height: fit-content;
+    padding: 20px;
+    background-color: var(--main-accent);
+    border-radius: 10px;
+    box-shadow: 7px 9px 27px 7px rgba(0,0,0,0.3);
+    margin: 0 0 30px;
+}
+
+.todo > .name {
+    font-weight: bold;
+}
+
+.todo > div {
+    padding:  0 0 10px 0;
+}
+
+.card-title {
+    margin: 1vw 0 0.5vw 1vw;
+}
+
+.board-holder {
+    width: fit-content;
+    margin: 0;
+}
+
+
+nav {
+    display: inline;
+    text-align: center;
+    margin: auto;
+}
+
+#show-page-pieces {
+    display: flex;
+}
+
+#single-img {
+    display: flex;
+    margin: 0 2vw 2vw 0;
+}
+
+#img-info {
+    margin: 20px 0 0 0;
+    font-size: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+}
+.column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+}
+
+.column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.column img:hover {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+    padding: 2px;
+    background-color: gray;
+}
+
+.grey {background-color: rgb(137, 137, 137);}
+.high-priority {
+    border: #292F36 solid 2px;
+}
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 1200px) {
+    
+    #show-page-pieces {
+        display: block;
+    }
+    #single-img {
+        width: 60vw;
+        margin: 0 auto 3vh 0;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+    #show-page-pieces {
+        display: block;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+
+}
+
+.x-out {
+    display: inline;
+    text-align: end;
+    right: 100px;
+}

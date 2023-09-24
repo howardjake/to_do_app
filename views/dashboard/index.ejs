@@ -1,0 +1,103 @@
+<%- include('../partials/header') %>
+<body>
+    <header>
+    </header>
+    <header>
+        <h1 id="logo"><a href="/dashboard">to_do</a></h1>
+    </header>
+    <main>
+        <h3 class="center list-title"><%= foundUser.firstName %>'s List</h3>
+        <!-- current to-dos -->
+        <div id="dashboard">
+
+            <div id="current">
+                  <% foundUser.todos.forEach(function(todo){ %>
+                          <div class="todo \
+                            <% if(todo.completed == true) { %>
+                                grey
+                            <% } %>
+                            <% if(todo.priority == "High") { %>
+                                high-priority 
+                            <% } %>">
+                            <div class="name">
+                                <%= todo.name %>
+                            </div>
+                            <div class="description">
+                                <%= todo.description %>
+                            </div>
+                            <div class="priority">
+                                Priority: <%= todo.priority %>
+                            </div>
+                            <div class="dueDate">
+                              <%= todo.dueDate.toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }) %> 
+                            </div>
+
+                            <% if(todo.completed != true) { %> 
+                            <div 
+                            class="completed-box">
+                                <form action="/dashboard/<%= todo._id %>?_method=PUT" method="POST">
+                                <input type="hidden" name="completed" value="true">
+                                 <button class="btn btn-outline-success" type="submit">Mark as Done</button>
+                                 </form>
+                            </div>
+                            <% } %>
+                            <% if(todo.completed == true) { %>
+                            <div class="completed-box">
+                                <form action="/dashboard/<%= todo._id %>?_method=PUT" method="POST">
+                                <input type="hidden" name="completed" value="false">
+                                 <button class="btn btn-outline-warning" type="submit">Mark as incomplete</button>
+                                 </form>
+                            </div> 
+                                <div class="delete-box">
+                                    <form action="/dashboard/<%= todo._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-outline-danger delete" type="button">Delete</button>
+                                    </form>
+                                </div>
+                            <% } %>
+                          </div>
+
+                  <% }); %>
+        </div>
+        <div id="new">
+            <form autocomplete="off" action="/dashboard/create" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input class="form-control" type="text" name="name" >
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="priority" class="form-label">Priority</label>
+                    <br>
+                    <select class="form-select" aria-label="Default select example" name="priority">
+                        <option selected>Select</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                        <!-- <option value="4">Four</option> -->
+                    </select>
+                </div>
+                <!-- completed -->
+                <div class="hidden">
+                    <label for="completed" class="form-label">Completed</label>
+                    <br>
+                    <select class="form-select" aria-label="Default select example" name="completed">
+                        <option value="true">True</option>
+                        <option selected value="false">False</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="dueDate" class="form-label">Due Date</label>
+                    <input type="datetime-local" class="form-control" id="dueDate" name="dueDate">
+                </div>
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="this.parentNode.submit()">Create</button>
+        </div>
+        </div>
+        <hr>
+        <div class="center" id="logout">
+            <a href="/dashboard/logout">Logout</a>
+        </div>
+    </main>
+</body>
