@@ -12,6 +12,7 @@
 
             <div id="current">
                   <% foundUser.todos.forEach(function(todo){ %>
+                        <% if (todo) { %>
                           <div class="todo \
                             <% if(todo.completed == true) { %>
                                 grey
@@ -28,9 +29,12 @@
                             <div class="priority">
                                 Priority: <%= todo.priority %>
                             </div>
+                            <% if (todo.dueDate) { %>
                             <div class="dueDate">
+                                Due Date:
                               <%= todo.dueDate.toLocaleString(undefined, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }) %> 
                             </div>
+                            <% } %>
 
                             <% if(todo.completed != true) { %> 
                             <div 
@@ -39,7 +43,8 @@
                                 <input type="hidden" name="completed" value="true">
                                  <button class="btn btn-outline-success" type="submit">Mark as Done</button>
                                  </form>
-                            </div>
+                                </div>
+                                <% } %>
                             <% } %>
                             <% if(todo.completed == true) { %>
                             <div class="completed-box">
@@ -58,11 +63,13 @@
 
                   <% }); %>
         </div>
+
+        <!-- Create new ToDo -->
         <div id="new">
             <form autocomplete="off" action="/dashboard/create" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input class="form-control" type="text" name="name" >
+                    <input required class="form-control" type="text" name="name" >
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
@@ -71,9 +78,8 @@
                 <div class="mb-3">
                     <label for="priority" class="form-label">Priority</label>
                     <br>
-                    <select class="form-select" aria-label="Default select example" name="priority">
-                        <option selected>Select</option>
-                        <option value="Low">Low</option>
+                    <select required class="form-select" aria-label="Default select example" name="priority">
+                        <option selected value="Low">Low</option>
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                         <!-- <option value="4">Four</option> -->
@@ -92,7 +98,8 @@
                     <label for="dueDate" class="form-label">Due Date</label>
                     <input type="datetime-local" class="form-control" id="dueDate" name="dueDate">
                 </div>
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="this.parentNode.submit()">Create</button>
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Create</button>
+            </form>
         </div>
         </div>
         <hr>
