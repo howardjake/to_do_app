@@ -13,6 +13,6 @@
 - jQuery
 
 # Getting Started
-- Go [Here](https://todo-sm-a0e0f243e3b4.herokuapp.com/dashboard)
+- Go [Here](https://jaketodoapp-2828ea16b346.herokuapp.com/)
 - Create an account 
 - Create your to do list
